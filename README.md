@@ -3,8 +3,6 @@ Authorize.net Component for CakePHP
 
 Simple component for CakePHP that uses the Advanced Integration Method (AIM)for processing 'card not present' transactions in Authorize.net
 
-_[Authorize.net Component Usage]_
-
 This component currently only supports 2 basic authorize.net calls.  Authorize and Capture (AUTH_CAPTURE) and Credit (CREDIT).
 
 ### Configuration Options
@@ -13,7 +11,7 @@ Modify the $config variable with your secret login and transaction key you can o
 
 ```php
 var $config = array(
-	'x_login'		=> 'XXXXXX',
+	'x_login'	=> 'XXXXXX',
 	'x_tran_key'	=> 'XXXXXX'
 );
 ```

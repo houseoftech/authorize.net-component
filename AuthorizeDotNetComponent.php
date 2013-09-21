@@ -6,7 +6,7 @@
  * Currently supports the following transaction types: Authorization and Capture, Credit
  * 
  * @link: 	https://github.com/LeGrande/authorize.net-component
- * @author: 	LeGrande Jolley
+ * @author: 	LeGrande Jolley - rroyale@gmail.com
  * @version: 	0.1
  * @license 	MIT
  */
@@ -47,31 +47,6 @@ class AuthorizeDotNetComponent extends Component {
 	 */
 	function auth_capture($data) {
 
-		/*
-			$data should be formatted this way:
-			array(
-				'Billing' 		=> array(
-					'first_name'	=>'John',
-					'last_name'		=>'Doe',
-					'address'		=>'123 Main Street',
-					'city'			=>'West Point',
-					'state'			=>'NE',
-					'zip_code'		=>'10010',
-					'email'			=>'john.doe@email.com',
-					'phone'			=>'801.555.1234'
-				),
-				'CreditCard' 	=> array(
-					'number'		=>4100111122223333',
-					'expiration'	=>'MMYY'
-				),
-				'Transaction' 	=> array(
-					'amount'			=>'99.12',
-					'description'		=> 'Purchase Tickets!',
-					'invoice_number'	=> '51349684',
-				)
-			)
-		 */
-
 		$authnet_values = array(
 			'x_type'		=> 'AUTH_CAPTURE',
 			'x_method'		=> 'CC',
@@ -106,14 +81,6 @@ class AuthorizeDotNetComponent extends Component {
 	 * @return array       the response from authorize.net
 	 */
 	function credit($data) {
-
-		/*
-			$data should be formatted this way:
-			array(
-				'trans_id' => '123456789', // a valid transaction ID of an original successfully settled transaction
-				'credit_card' => '1355' //full credit card number or last four digits only here
-			)
-		*/
 
 		$authnet_values = array(
 			'x_type'		=> 'CREDIT',

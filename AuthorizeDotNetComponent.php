@@ -4,6 +4,11 @@
  * File: /app/Controller/Component/AttachmentComponent.php
  * An Authorize.net component for CakePHP
  * Currently supports the following transaction types: Authorization and Capture, Credit
+ * 
+ * @link: 	https://github.com/LeGrande/authorize.net-component
+ * @author: 	LeGrande Jolley
+ * @version: 	0.1
+ * @license 	MIT
  */
 
 class AuthorizeDotNetComponent extends Component {
@@ -13,7 +18,7 @@ class AuthorizeDotNetComponent extends Component {
 	 * @var array
 	 */
 	var $config = array(
-		'x_login'		=> 'XXXXXXX',
+		'x_login'	=> 'XXXXXXX',
 		'x_tran_key'	=> 'XXXXXXX'
 	);
 
@@ -22,7 +27,7 @@ class AuthorizeDotNetComponent extends Component {
 	 * @var array
 	 */
 	var $authnet_setup = array(
-		'x_version'			=> '3.1',
+		'x_version'		=> '3.1',
 		'x_delim_data'		=> 'TRUE',
 		'x_delim_char'		=> '|',
 		'x_relay_response'	=> 'FALSE'
@@ -68,23 +73,23 @@ class AuthorizeDotNetComponent extends Component {
 		 */
 
 		$authnet_values = array(
-			'x_type'			=> 'AUTH_CAPTURE',
-			'x_method'			=> 'CC',
+			'x_type'		=> 'AUTH_CAPTURE',
+			'x_method'		=> 'CC',
 			'x_card_num'		=> $data['CreditCard']['number'],
 			'x_exp_date'		=> $data['CreditCard']['expiration'],
 
-			'x_amount'			=> $data['Transaction']['amount'],
+			'x_amount'		=> $data['Transaction']['amount'],
 			'x_description'		=> $data['Transaction']['description'],
 			'x_invoice_num'		=> $data['Transaction']['invoice_number'],
 
 			'x_first_name'		=> $data['Billing']['first_name'],
 			'x_last_name'		=> $data['Billing']['last_name'],
-			'x_address'			=> $data['Billing']['address'],
-			'x_city'			=> $data['Billing']['city'],
-			'x_state'			=> $data['Billing']['state'],
-			'x_zip'				=> $data['Billing']['zip_code'],
-			'x_email'			=> $data['Billing']['email'],
-			'x_phone'			=> $data['Billing']['phone']
+			'x_address'		=> $data['Billing']['address'],
+			'x_city'		=> $data['Billing']['city'],
+			'x_state'		=> $data['Billing']['state'],
+			'x_zip'			=> $data['Billing']['zip_code'],
+			'x_email'		=> $data['Billing']['email'],
+			'x_phone'		=> $data['Billing']['phone']
 		);
 
 		$response = $this->make_request($authnet_values);
@@ -111,7 +116,7 @@ class AuthorizeDotNetComponent extends Component {
 		*/
 
 		$authnet_values = array(
-			'x_type'			=> 'CREDIT',
+			'x_type'		=> 'CREDIT',
 			'x_trans_id'		=> $data['trans_id'],
 			'x_card_num'		=> $data['credit_card']
 		);
@@ -123,12 +128,12 @@ class AuthorizeDotNetComponent extends Component {
 
 	function make_request($authnet_values) {
 
-		$authnet_values['x_login'] => $config['x_login'];
-		$authnet_values['x_tran_key'] => $config['x_tran_key'];
-		$authnet_values['x_version'] => $config['x_version'];
-		$authnet_values['x_delim_data'] => $config['x_delim_data'];
-		$authnet_values['x_delim_char'] => $config['x_delim_char'];
-		$authnet_values['x_relay_response'] => $config['x_relay_response'];
+		$authnet_values['x_login'] 		=> $config['x_login'];
+		$authnet_values['x_tran_key'] 		=> $config['x_tran_key'];
+		$authnet_values['x_version'] 		=> $config['x_version'];
+		$authnet_values['x_delim_data'] 	=> $config['x_delim_data'];
+		$authnet_values['x_delim_char'] 	=> $config['x_delim_char'];
+		$authnet_values['x_relay_response'] 	=> $config['x_relay_response'];
 
 		$post_string = '';
 		foreach($authnet_values as $key => $value) {

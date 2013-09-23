@@ -72,9 +72,6 @@ class AuthorizeDotNetComponent extends Component {
 
 	}
 
-	/*
-		this function will refund an entire transaction.  required to pass the full credit card number
-	*/
 	/**
 	 * refund an entire transaction. requires to pass the full transaction number
 	 * @param  array $data the data necessary to make the transaction

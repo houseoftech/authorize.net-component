@@ -95,12 +95,12 @@ class AuthorizeDotNetComponent extends Component {
 
 	function make_request($authnet_values) {
 
-		$authnet_values['x_login'] 		=> $config['x_login'];
-		$authnet_values['x_tran_key'] 		=> $config['x_tran_key'];
-		$authnet_values['x_version'] 		=> $config['x_version'];
-		$authnet_values['x_delim_data'] 	=> $config['x_delim_data'];
-		$authnet_values['x_delim_char'] 	=> $config['x_delim_char'];
-		$authnet_values['x_relay_response'] 	=> $config['x_relay_response'];
+		$authnet_values['x_login'] 		= $config['x_login'];
+		$authnet_values['x_tran_key'] 		= $config['x_tran_key'];
+		$authnet_values['x_version'] 		= $config['x_version'];
+		$authnet_values['x_delim_data'] 	= $config['x_delim_data'];
+		$authnet_values['x_delim_char'] 	= $config['x_delim_char'];
+		$authnet_values['x_relay_response'] 	= $config['x_relay_response'];
 
 		$post_string = '';
 		foreach($authnet_values as $key => $value) {

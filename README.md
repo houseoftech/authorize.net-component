@@ -1,18 +1,36 @@
-Authorize.net Component for CakePHP
+Authorize.net Plugin for CakePHP
 =======================
 
 Simple component for CakePHP that uses the Advanced Integration Method (AIM)for processing 'card not present' transactions in Authorize.net
 
 This component currently only supports 2 basic authorize.net calls.  Authorize and Capture (AUTH_CAPTURE) and Credit (CREDIT).
 
-### Configuration Options
+### Setup
 
-Modify the $config variable with your secret login and transaction key you can obtain from Authorize.net
+Put the AuthorizeDotNet folder in your Plugins directory.
+
+Load the plugin in your Config/bootstrap.php file:
 
 ```php
-var $config = array(
-	'x_login'	=> 'XXXXXX',
-	'x_tran_key'	=> 'XXXXXX'
+CakePlugin::load('AuthorizeDotNet');
+```
+
+Alternatively if you use loadAll() you won't have to do this:
+
+```php
+CakePlugin::loadAll();
+```
+
+### Configuration Options
+
+Use component configuration to pass variables with your secret login and transaction key you can obtain from Authorize.net
+
+```php
+var $components = array(
+	'AuthorizeDotNet.AIMComponent' => array(
+		'login'	=> 'XXXXXX',
+		'transaction_key'	=> 'XXXXXX'
+	)
 );
 ```
 
@@ -35,21 +53,21 @@ The variable $data should be formatted the following way:
 ```php
 array(
 	'Billing' => array(
-		'first_name'	=>'John',
-		'last_name'	=>'Doe',
-		'address'	=>'123 Main Street',
-		'city'		=>'West Point',
-		'state'		=>'NE',
-		'zip_code'	=>'10010',
-		'email'		=>'john.doe@email.com',
-		'phone'		=>'801.555.1234'
+		'first_name'		=> 'John',
+		'last_name'		=> 'Doe',
+		'address'			=> '123 Main Street',
+		'city'			=> 'West Point',
+		'state'			=> 'NE',
+		'zip_code'		=> '10010',
+		'email'			=> 'john.doe@email.com',
+		'phone'			=> '801.555.1234'
 	),
 	'CreditCard' => array(
-		'number'	=>4100111122223333',
-		'expiration'	=>'MMYY'
+		'number'			=> '4100111122223333',
+		'expiration'		=> 'MMYY'
 	),
 	'Transaction' 	=> array(
-		'amount'		=>'99.12',
+		'amount'			=> '99.12',
 		'description'		=> 'Purchase Tickets!',
 		'invoice_number'	=> '51349684',
 	)
@@ -74,8 +92,8 @@ The variable $data should be formatted the following way:
 
 ```php
 array(
-	'trans_id' => '123456789', // a valid transaction ID of an original successfully settled transaction
-	'credit_card' => '1355' //full credit card number or last four digits only here
+	'trans_id' 	=> '123456789', // a valid transaction ID of an original successfully settled transaction
+	'credit_card' 	=> '1355' //full credit card number or last four digits only here
 )
 ```
 
@@ -83,7 +101,8 @@ array(
 
 The MIT License (MIT)
 
-Copyright (c) 2013 LeGrande Jolley
+Original Component Copyright (c) 2013 LeGrande Jolley
+Modified Component and Plugin Copyright 2013 House of Tech
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
